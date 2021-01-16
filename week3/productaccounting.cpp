@@ -1,34 +1,48 @@
 #include <iostream>
-#include <list>
+#include <map>
 
 using namespace std;
 
-list<long>::iterator setit[2000000000],it1;
-long setpro[2000000000];
+//long long ans[100100];
+
+long long setproduct[100100];
 
 int main(){
-    list<long> pro;
-    long m,act,i,a,b;
+    map<long long,long long> pro;
+    map<long long, long long>::iterator it1;
+    long long m,act,i,a,b,tmp,tmp2;
 
     cin >> m;
     for(i=0;i<m;i++){
         cin >> act;
         if(act == 1){
             cin >> a >> b;
-            pro.push_back(b);
-            it1 = pro.end();
-            it1--;
-            setit[a] = it1;
-            setpro[a] = 1;
+            if(pro[a] <= 0)
+              pro[a] = i+1;
+            setproduct[pro[a]] += b;
         }
         else if(act == 2){
             cin >> a;
-            if(setpro[a] == 1){
-                it1 = setit[a];
-                cout << *(it1) << endl;
+            tmp = pro[a];
+            if(tmp == 0){
+                cout << 0 << endl;
             }
             else{
-                cout << 0 << endl;
+                cout << setproduct[tmp] << endl;
+            }
+        }
+        else if(act == 3){
+            cin >> a >> b;
+            tmp = pro[a];
+            tmp2 = setproduct[tmp];
+            if(tmp2 < b){
+                cout << tmp2 << endl;
+                setproduct[tmp] = 0;
+            }
+            else{
+                tmp2 -= b;
+                setproduct[tmp] = tmp2;
+                cout << b << endl;
             }
         }
     }

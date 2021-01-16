@@ -3,8 +3,16 @@
 
 using namespace std;
 
-list<long> l[300001];
-list<long>::iterator it1,it2,parent[300001],childe[300001];
+list<long> l[301000];
+list<long>::iterator it1,it2;
+
+long parent[301000];;
+
+int findp(long x){
+    if(parent[x] == x)
+        return x;
+    return parent[x] = findp(parent[x]);
+}
 
 int main(){
     long n,i,x,y,tmp,tmp1,tmp2;
@@ -12,7 +20,7 @@ int main(){
     cin >> n;
     for(i = 1;i <= n; i++){
         l[i].push_back(i);
-
+        parent[i] = i;
     }
     for(i = 1;i<n;i++){
         cin >> x >> y;
@@ -20,22 +28,21 @@ int main(){
             it1 = l[y].begin();
             it1++;
             l[y].splice(it1,l[x]);
-            parent[x] = l[y].begin();
-            it1 = l[y].begin();
-            it1++;
-            childe[x] =  it1;
-            tmp = y;
+            parent[x] = findp(y);
         }
         else{
-            it1 = parent[y];
-            it2 = childe[y];
-            tmp1 = *(it1);
+            tmp1 = findp(y);
+            for(it2 = l[tmp1].begin();it2 != l[tmp1].end();it2++){
+                if(*(it2) == y){
+                    break;
+                }
+            }
             it2++;
             l[tmp1].splice(it2,l[x]);
-            parent[x] = parent[y];
-            it1 = childe[y];
-            it1++;
-            childe[x] =  it1;
+            parent[x] = findp(y);
+            // it1 = childe[y];
+            // it1++;
+            // childe[x] =  it1;
             tmp = tmp1;
         }
     }

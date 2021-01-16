@@ -6,7 +6,7 @@ using namespace std;
 int main(){
     long i,j,k,n,max=0;
     char command;
-    list<long> chala[100000];
+    list<long> chala[101000];
     list<long>::iterator it;
 
     cin >> n;
@@ -20,7 +20,7 @@ int main(){
             chala[j].splice(it,chala[i]);
         }
     }
-    for(k = 0; k<100000; k++){
+    for(k = 1; k<=100000; k++){
         if(chala[k].size() == 0){
             continue;
         }

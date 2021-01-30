@@ -24,7 +24,6 @@ int main(){
     for(i = 1; i <= 1; i++){
         for(j = 1; j <= m; j++){
             if(visited[i][j] != 1 && mappa[i][j] != '#'){
-                // cout << i << " " << j << endl;
                 tmp++;
                 visited[i][j] = 1;
                 mapi[tmp] = i;
@@ -36,7 +35,6 @@ int main(){
                     tmpi = mapi[b];
                     tmpj = mapj[b];
                     if(tmpj+1 <= m && tmpi+1 <= n){
-                        // cout << "YYYY" <<endl;
                         if(mappa[tmpi][tmpj+1] != '#' && mappa[tmpi+1][tmpj] != '#' && mappa[tmpi][tmpj] != '#' && mappa[tmpi+1][tmpj+1] != '#'){
                             for(k = 0; k<4; k++){
                                 if(tmpi+directx[k] >= 1 && tmpi+directx[k] <= n && tmpj+directy[k] >= 1 && tmpj+directy[k] <= m && visited[tmpi+directx[k]][tmpj+directy[k]] != 1){
@@ -47,13 +45,6 @@ int main(){
                                         mapi[tmp] = tmpi+directx[k];
                                         mapj[tmp] = tmpj+directy[k];
                                         mappa[tmpi][tmpj] = 's';
-                                        // for(tmp5 = 1; tmp5 <= n; tmp5++){
-                                        //     for(tmp6 = 1; tmp6 <=m; tmp6++){
-                                        //         cout << mappa[tmp5][tmp6];
-                                        //     }
-                                        //     cout << endl;
-                                        // }
-                                        // cout << "YYYY" << endl;
                                         if(tmpi == n-1){
                                             end = 1;
                                             break;

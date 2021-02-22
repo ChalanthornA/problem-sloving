@@ -35,5 +35,5 @@ int main(){
     q.push(stuff);
     ostuff = q.top();
     q.pop();
-    cout << ostuff.a << " " << ostuff.b << endl;
+    cout << ostuff.a << " " << ostuff.b << endl
 }

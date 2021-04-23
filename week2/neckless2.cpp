@@ -6,9 +6,9 @@ using namespace std;
 list<long> l[301000];
 list<long>::iterator it1,it2;
 
-long parent[301000];;
+long parent[301000];
 
-int findp(long x){
+int findp(int x){
     if(parent[x] == x)
         return x;
     return parent[x] = findp(parent[x]);

@@ -4,7 +4,9 @@
         "list": "cpp",
         "iostream": "cpp",
         "set": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "chrono": "cpp",
+        "complex": "cpp"
     },
     "compile-hero.disable-compile-files-on-did-save-code": true
 }
